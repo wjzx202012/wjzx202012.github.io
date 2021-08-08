@@ -59,8 +59,8 @@
 		animation-duration: 1s;
 		}
 		@keyframes img{
-		from {margin-top: 32px;margin-bottom: 32px;}
-		to {}
+		from {width: 75%;}
+		to {width: 100%;}
 		}
    		footer{
 		border-radius: 10px 10px 0 0;
@@ -82,13 +82,36 @@
 			<div id="content"> 
 				<h1 class="mdui-text-color-theme-accent mdui-text-color-theme-text title" style="margin: 8px;">答案库</h1> 
 				<img src="images/BGS_HEADER_20210403.jpg" class="mdui-shadow-8 mdui-img-fluid img" style="border-radius: 10px;margin-left: auto;margin-right: auto;max-height: 96px;"> 
-				<p style="text-align: center;font-weight: bold;font-size: 15px;margin-top: 24px;" class="mdui-text-color-theme-accent mdui-text-color-theme-text">您正在浏览 王杰中学8年级12班 答案库<br><br>输入访问码即可进入</p> 
+				<p style="text-align: center;font-weight: bold;font-size: 15px;margin-top: 24px;" class="mdui-text-color-theme-accent mdui-text-color-theme-text" id="text">您正在浏览 王杰中学8年级12班 答案库<br><br>输入访问码后可进入</p> 
 				<div id="input"> 
 					<div class="mdui-textfield mdui-textfield-floating-label"> <i class="mdui-icon material-icons">vpn_key</i> <label class="mdui-textfield-label">访问码</label> 
 						<input class="mdui-textfield-input" type="password" id="password"> 
 					</div> <button class="mdui-btn mdui-color-theme-accent mdui-float-right mdui-ripple" style="border-radius: 20px;" onclick="input()">确定</button> 
 				</div> 
-				<div id="enter"> <a class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-center" style="border-radius: 20px;margin: 16px;font-size: 15px;" onclick="enter()">进入答案库<i class="mdui-icon material-icons" style="font-size: 20px;margin-top: 2px;margin-bottom: 4px;">arrow_forward</i></a> 
+				<div id="enter"> 
+					<ul class="mdui-list"> 
+						<li class="mdui-list-item mdui-ripple" onclick="enter()"> <i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-theme-accent">arrow_forward</i> 
+							<div class="mdui-list-item-content"> 
+								<div class="mdui-list-item-title">
+									 进入答案库 
+								</div> 
+								<div class="mdui-list-item-text">
+									 在线浏览答案库 
+								</div> 
+							</div> </li> 
+						<li class="mdui-list-item mdui-ripple" onclick="get()"> <i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-green mdui-text-color-white">cloud_download</i> 
+							<div class="mdui-list-item-content"> 
+								<div class="mdui-list-item-title">
+									 打包下载全部答案 
+								</div> 
+								<div class="mdui-list-item-text">
+									 获取 zip 包，可离线浏览 
+								</div> 
+							</div> </li> 
+					</ul> 
+            <div class="mdui-typo">
+<p><div class="mdui-typo-body-2 mdui-text-center">本站答案图片使用 <a href="https://w103.camscanner.com/">扫描全能王</a> 制作</div></p>
+</div>
 				</div> 
 			</div> 
 		</div> 
@@ -127,6 +150,7 @@
 		<script>
 			if (localStorage.getItem("password") == "true"){
 				document.getElementById('input').style.display = "none";
+				document.getElementById('text'). innerHTML = "您正在浏览 王杰中学8年级12班 答案库<br><br>请选择以下选项";
 			}
 			else{
 				document.getElementById('enter').style.display = "none";
@@ -163,6 +187,16 @@
 			function index(){
 				document.getElementById('iframe').style.display = "none";
 				document.getElementById('content').style.display = "block";
+			}
+		</script> 
+		<script>
+			function get(){
+				if (localStorage.getItem("password") == "true"){
+					alert("敬请期待");
+				}
+				else{
+					alert("请先输入访问码");
+				}
 			}
 		</script>  
 	</body>
